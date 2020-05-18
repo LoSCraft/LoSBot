@@ -1,0 +1,1007 @@
+###########################################
+#                                         #
+#        LANGUAGE CONFIGURATION           #
+#            VERSION: 4.2.1               #
+#                                         #
+###########################################
+
+GlobalErrors:
+    InvalidUser: "Please provide a valid user"
+
+GiveawaySystem:
+    GiveawayWinnerEmbed:
+        Title: "Giveaway Winners"
+        Description: "Congratulations to {winners} for winning the **{prize}**! Please create a ticket to claim your prize"
+    GiveawayWinnersReRolled:
+        Title: "Giveaway Winners Rerolled"
+        Description: "Congratulations to the new winners, {winners}, for winning the **{prize}**! Please create a ticket to claim your prize"
+    GiveawayEndedEmbed:
+        Content: "🎉 **GIVEAWAY ENDED** 🎉"
+        Title: "{giveawaytitle}"
+        Description: "Winners:\n{winners}"
+        Footer: "Ended On"
+    Commands:
+        Gcreate:
+            Errors:
+                MaxGiveawaysReached: "You've reached the maximum amount of giveaways."
+                InvalidTime:
+                    Title: "Invalid Time"
+                    Description: "That format is invalid. Example: ``1d1h1m``. **Please try again.**"
+                InvalidWinners:
+                    Title: "Invalid Winners"
+                    Description: "The number of winners must be a number. **Please try again.**"
+                InvalidChannel:
+                    Title: "Invalid Channel"
+                    Description: "That channel does not exist. **Please try again.**"
+            Embeds:
+                Setup:
+                    Questions:
+                        [
+                            "How long would you like the giveaway to be?",
+                            "What do you want to giveaway?",
+                            "Please explain the item you are giving away.",
+                            "How many winners will there be?",
+                            "What channel do you want this giveaway to be hosted in? \n\nRespond with 'here' to host it in this channel, or respond with '#channel-name' to host it in another channel.",
+                        ]
+                    Title: "Giveaway Setup - {pos}"
+                Giveaway:
+                    Description: "{giveawaydesc}\n\nReact with {emoji} to enter the giveaway!\n\n**Hosted by:** {host}\n**Winners:** {winners}\n**Ending in:** {timer}"
+                    Footer: "Ends on"
+                GiveawayCreated:
+                    Title: "Giveaway Complete"
+                    Description: "The giveaway was successfully created!"
+            GiveawayCanceled: "Giveaway canceled"
+        Gdelete:
+            Errors:
+                InvalidGiveaway: "No giveaway found called ``{name}``"
+                NoGiveaways: "There are no giveaways to be deleted."
+            Deleted: "Giveaway Deleted"
+        Greroll:
+            Errors:
+                InvalidGiveaway: "No giveaway found called ``{name}``"
+                NoGiveaways: "There are no giveaways to be re-rolled."
+                GiveawayHasntEnded: "That giveaway has not ended yet!"
+            Rerolled: "The giveaway winner has been rerolled!"
+        Gstop:
+            Stopped: "The giveaway has been force stopped!"
+    Errors:
+        NoOneEntered: "No one has entered the giveaway."
+
+FilterSystem:
+    Commands:
+        Filter:
+            Help:
+                Title: "Filter System"
+                Description: "**Commands:**\n\n*-filter (subcommand) (option)*\n\n**filter list** - __shows the list of words in the filter__\n**filter add** - __add a word to the filter__\n**filter remove** - __remove a word from the filter__"
+            List:
+                Title: "Filter System | Blacklisted Words"
+            Add:
+                WordAlreadyInFilter: "That word is already in the filter."
+                Title: "Filter System | Word Added"
+                Description: "The word ``{word}`` has been added to the filter. "
+            Remove:
+                InvalidWord: "**Invalid word!** Blacklisted words are: {words}"
+                Title: "Filter System | Word Removed"
+                Description: "The word ``{word}`` has been removed from the filter."
+            NoWordsInFilter: "None"
+    MessageFilter:
+        Title: "**MESSAGE FILTER**"
+        Fields: ["Filter Name", "Message", "Link to Message", "Message Author"]
+    Filter:
+        Title: "Filter"
+        Description: "That word is blacklisted! Please do not say it."
+
+CoinModule:
+    Commands:
+        Buy:
+            Errors:
+                InvalidItem: "**Invalid Item!** Valid items are: {validitems}"
+                AlreadyPurchased: "You've already purchased this item"
+            Embeds:
+                ItemPurchased:
+                    Title: "Item Purchased"
+                    Description: "You've successfully purchased the {item} for {price} coins"
+        Coins:
+            Embeds:
+                YourCoins:
+                    Title: "Coins"
+                    Description: "You have {coins} coins"
+                UserCoins:
+                    Title: "Coins"
+                    Description: "{user} has {coins} coins"
+        Daily:
+            Cooldown: "You must wait **{time}** till you can work again!"
+            Collected: "You successfully claimed your daily {coins} coins"
+        Pay:
+            Errors:
+                PaySelf: "You cannot send yourself money"
+                PayBot: "You cannot send coins to a bot"
+                InvalidAmount: "Please provide a valid amount of coins to send"
+            Embed:
+                Title: "💰 Transaction Complete"
+                Description: "You successfully sent {amt} coins to {user}"
+                Fields: ["Your Coins", "Their Coins"]
+        Slots:
+            Errors:
+                InvalidAmount: "That is an invalid amount of coins."
+                AtLeast10Coins: "You must gamble at least 10 coins."
+                GreaterThan100M: "You can not gamble that many coins."
+            Embed:
+                Title: "Slots"
+                Description: "{user} gambled {gambled} coins and recieved back **{recieved}** coins!"
+        Work:
+            Errors:
+                InvalidJobSetup: "Not all jobs are setup correctly. Please check console."
+                NoJob: "You currently do not have a job! Please apply for one to begin working."
+                WorkCooldown: "You must wait **{time}** till you can work again!"
+                AlreadyHaveJob: "You must leave your job before applying at a new one! Run {prefix}work quit"
+                InvalidJob: "Please provide a valid job. Run {prefix}work jobs to see a full list of jobs"
+                ApplyCooldown: "You must wait **{time}** till you can apply for a job again!"
+                FailedRequirements: "You do not pass the requirements for this job!"
+            Embeds:
+                Help:
+                    Title: "Work Help Menu"
+                    Description: "**{prefix}work** - Work at your job\n**{prefix}work apply <job>** - Join a job\n**{prefix}work jobs** - List of available jobs\n**{prefix}work quit** - Quit your job\n**{prefix}work help** - Send this help menu"
+                WorkComplete:
+                    Title: "💸 Work Complete"
+                    Description: "{randommessages}You worked for **{shift}** hours and earned **{pay} coins**! You will be able to work again in **{time}**"
+                Promotion:
+                    Title: "🎖️ Promotion"
+                    Description: "You've been promoted to **{tier}**! Your new hourly pay is **{pay}** coins."
+                Applied:
+                    Title: "New Job"
+                    Description: "You've been accepted! You now work as a **{job}** at **{workplace}**!"
+                List:
+                    Title: "Jobs"
+                    Format: "**{jobname}**\nStarter Hourly Pay: {pay}\nRequirements:\n- Coins: {req-coins}\n- Exp: {req-exp}\n- Role: {req-role}\n- Times worked: {req-worked}"
+                Quit:
+                    Confirmation: "Are you sure you would like to quit your job?"
+                    Left: "👋 You successfully quit your job!"
+                    Cancel: "Canceled"
+    CointopUnknownUser: "Unknown"
+    Errors:
+        NotEnoughCoins: "You do not have the required amount of coins to do this"
+
+XPModule:
+    Commands:
+        Level:
+            Title:
+                Self: "Your Level"
+                User: "{username}'s Level"
+            Fields: ["Current Level", "Current XP"]
+            Footer: "{xpneeded} XP required to level up"
+            Thumbnail: "http://pixelartmaker.com/art/0fc29bffe9ca6e5.png"
+    LevelUp:
+        Title: "⬆️ Level Up"
+        Description: "{user}, you just leveled up! You are now level **{level}**!"
+    LeveltopUnknownUser: "Unknown"
+
+AntiAdSystem:
+    StatusAdDetected:
+        Title: "Advertisement Detected"
+        Fields: ["User", "User ID", "Detected"]
+    MessageAdDetected:
+        Title: "Anti-Advertisement"
+        Description: "Advertising is not allowed, {user}!"
+
+TicketModule:
+    Errors:
+        TicketNotExist: "This ticket does not exist in the database."
+    Commands:
+        Add:
+            Errors:
+                AddSelf: "You already have access to this ticket."
+                UserAlreadyHaveAccess: "This user has already been added to the ticket."
+            Embeds:
+                UserAdded:
+                    Title: "User Added"
+                    Description: "User {tag} has been added to this ticket!"
+                Log:
+                    Title: "User Added"
+                    Fields: ["Added User", "Addded By", "Ticket", "Channel"]
+        Close:
+            Confirmation: "Are you sure you would like to close this ticket?"
+            Canceled: ":x: Close canceled"
+            NoAddedUsers: "None"
+            NoReason: "None"
+            Embeds:
+                DM:
+                    Title: "Your ticket has been closed!"
+                    Description: "**Ticket ID:** {ticket}\n**Reason:** {reason}"
+                Log:
+                    Title: "Ticket Closed"
+                    Fields:
+                        [
+                            "Ticket ID",
+                            "Closed By",
+                            "Ticket Creator",
+                            "Added Users",
+                            "Reason",
+                        ]
+        Closeall:
+            Confirmation: "Are you sure you would like to close all tickets?"
+            Canceled: ":x: Close all canceled"
+            Complete: "All tickets found in the database have been closed"
+        New:
+            Errors:
+                MaxTickets: "You can only have **{ticketlimit}** ticket(s) open at a time. Please close one of your tickets to create a new one."
+            Embeds:
+                Created:
+                    Title: "Ticket Created"
+                    Description: "Your new ticket has been created in {channel}!"
+                Log:
+                    Title: "Ticket Created"
+                    Fields: ["Creator", "Ticket ID", "Channel"]
+        Remove:
+            Errors:
+                RemoveOwnAccess: "You can't remove your own access."
+                NoAccess: "That user does not have access to this ticket."
+            Embeds:
+                Removed:
+                    Title: "User Removed"
+                    Description: "User ``{user}`` has been removed from this ticket!"
+                Log:
+                    Title: "User Removed"
+                    Fields: ["Removed User", "Removed By", "Ticket", "Channel"]
+    Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640377304954175499/ticket.png"
+
+ModerationModule:
+    Errors:
+        CantPunishStaffHigher: "You can not punish a staff member with a higher or same rank as you."
+        CantPunishStaff: "You can not punish a staff member."
+        CantPunishUser: "You can not punish this user."
+        BotCantPunishUser: "I could not punish this user. Their highest role is either equal or higher role than mine!"
+        UserAlreadyPunished: "This user is already punished"
+    LogEmbed:
+        Title: "User Punished"
+        Fields:
+            ["User", "Punished By", "Type", "Reason", "Warn Count", "Length"]
+        Footer: "Punishment ID: {id}"
+    Commands:
+        Ban:
+            Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640354372936663051/blacklist.png"
+            Title: "User Punished"
+            Description: ":white_check_mark: {user} ({userid}) has been succesfully banned"
+        Blacklist:
+            Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640354372936663051/blacklist.png"
+            Title: "User Punished"
+            Description: ":white_check_mark: {user} ({userid}) has been succesfully blacklisted"
+        Clear:
+            Errors:
+                InvalidNumb: "Please provide a valid number"
+                BotNoPerms: "I do not have the correct permissions to delete messages."
+                OlderThan14Days: "You can not delete messages older than 14 days."
+                DeleteMoreThan99: "You can only delete a maximum of 99 messages at a time"
+            Cleared: "Successfully cleared **{amt}** messages"
+        History:
+            NoHistory: "This user has no punishment history"
+            Title: "{user}'s Punishment History"
+            FieldTitle: "**ID:** {id}"
+            Fields:
+                [
+                    "**Type:** ",
+                    "**Punished By:** ",
+                    "**Reason:** ",
+                    "**Length:** ",
+                    "**Date:** ",
+                    "**In Effect:** ",
+                ]
+            InEffect: ["Yes", "No"]
+        Kick:
+            Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640348361526083604/kick.png"
+            Title: "User Punished"
+            Description: ":white_check_mark: {user} ({userid}) has been succesfully kicked"
+        Lock:
+            Locked: ":white_check_mark: Lockdown mode **ENABLED**"
+            Log:
+                Title: "Channel Locked"
+                Fields: ["Channel", "Locked By"]
+                Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640025824157761556/lock.png"
+        Mute:
+            Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640345502419779614/mute.png"
+            Title: "User Punished"
+            Description: ":white_check_mark: {user} ({userid}) has been succesfully muted"
+        Removewarn:
+            Errors:
+                NoHistory: "This user has no warning history"
+                InvalidID: "Please provide a valid warn ID"
+            Embeds:
+                Removed:
+                    Title: "Warning Removed"
+                    Description: "The warning (ID: {id}) has successfully been removed"
+                Notification:
+                    Title: "Heads Up!"
+                    Description: "Your warning (ID: {id}) has been removed!\n\nReason: {reason}"
+                Log:
+                    Title: "Warning Removed"
+                    Fields: ["User", "Removed By", "Reason"]
+                    Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/643167958322905118/Warning.png"
+                    Footer: "Warning ID: {id}"
+        Report:
+            Errors:
+                ReportBot: "You can not report a bot"
+                ReportSelf: "You can not report yourself"
+                InvalidReason: "Please provide a reason"
+            Embeds:
+                Report:
+                    Title: "Report"
+                    Fields: ["Reported User", "Reported By", "Reason"]
+                Reported:
+                    Title: "User Reported"
+                    Description: "✅ Thank you for reporting this user."
+        Slowmode:
+            Errors:
+                InvalidTime: "Amount must be an integer in seconds"
+            Embeds:
+                Enabled:
+                    Title: "Slow Mode Enabled"
+                    Descriptions:
+                        [
+                            ":white_check_mark: The channel slow mode has been enabled",
+                            ":white_check_mark: The channel slow mode has been enabled and the rate limit has been set to {amount} seconds",
+                        ]
+                Disabled:
+                    Title: "Slow Mode Disabled"
+                    Description: "The channel slow mode has been disabled"
+        Tempban:
+            Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640349476200120340/banhammer.png"
+            Embeds:
+                Banned:
+                    Title: "User Punished"
+                    Description: ":white_check_mark: {user} ({userid}) has been succesfully temporarily banned"
+                Unbanned:
+                    Title: "User Unbanned"
+                    Description: "{user} is no longer banned!"
+        Tempmute:
+            Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640345502419779614/mute.png"
+            Embeds:
+                Muted:
+                    Title: "User Punished"
+                    Description: ":white_check_mark: {user} ({userid}) has been succesfully temporarily muted"
+                Unmuted:
+                    Title: "User Unmuted"
+                    Description: "{user} is no longer muted!"
+        Unban:
+            Errors:
+                UserNotBanned: "This user is currently not banned!"
+            Embeds:
+                Unbanned:
+                    Title: "User Unbanned"
+                    Description: ":white_check_mark: {user} ({id}) has been succesfully unbanned"
+                Log:
+                    Title: "User Unbanned"
+                    Fields: ["User", "Unbanned By"]
+        Unblacklist:
+            Errors:
+                UserNotBlacklisted: "This user is currently not blacklisted!"
+            Embeds:
+                Unblacklisted:
+                    Title: "User Unblacklisted"
+                    Description: ":white_check_mark: {user} ({userid}) has been succesfully unblacklisted"
+                Log:
+                    Title: "User Unblacklisted"
+                    Fields: ["User", "Unblacklisted By"]
+        Unlock:
+            Unlocked: ":x: Lockdown mode **DISABLED**"
+            Log:
+                Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640025818197786664/unlock.png"
+                Title: "Channel Unlocked"
+                Fields: ["Channel", "Unlocked By"]
+        Unmute:
+            Errors:
+                UserNotMuted: "This user is currently not muted!"
+            Embeds:
+                Unmuted:
+                    Title: "User Unmuted"
+                    Description: ":white_check_mark: {user} ({userid}) has been succesfully unmuted"
+                Log:
+                    Title: "User Unmuted"
+                    Fields: ["User", "Unmuted By"]
+        Warn:
+            Embeds:
+                Warned:
+                    Title: "User Punished"
+                    Description: ":white_check_mark: {user} ({userid}) has been succesfully warned"
+                Log:
+                    Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/643167958322905118/Warning.png"
+                    Footer: "Warn ID: {id}"
+                DM:
+                    Title: "Uh oh! You've been warned!"
+                    Fields: ["Server", "Warning", "Warning Count"]
+        Warnings:
+            Errors:
+                NoHistory: "{user} has no warning history!"
+            Embed:
+                Title: "{user}'s Warnings"
+                Fields: ["**ID:** ", "**Reason:** ", "**Timestamp:** "]
+
+AdminModule:
+    Commands:
+        Announce:
+            Questions:
+                [
+                    "What is the announcement's title?",
+                    "What is the announcement's description?",
+                    "Where would you like to send the announcement? Mention a channel.",
+                    "Who would you like to ping? Respond with 'no one', 'everyone', @role or a role's name. If you wish to ping multiple roles, seperate each role with a comma.",
+                ]
+            AnnouncementSetup: "Announcement Setup: {pos}"
+            SetupCanceled: ":x: **Announcement Setup Canceled**"
+            Embeds:
+                Posted:
+                    Title: "Announcement Posted"
+                    Description: ":white_check_mark: The announcement has successfully been sent."
+                InvalidChannel:
+                    Title: "Invalid Channel"
+                    Description: "Please mention a channel"
+        Createrole:
+            Errors:
+                InvalidHex: "Response must be in hexadecimal form"
+                InvalidNumber: "Response must be a calculated permission number"
+            Embeds:
+                RoleSetup:
+                    Title: "Role Setup {pos}"
+                    Questions:
+                        [
+                            "What do you want the role to be named?",
+                            "What do you want the role's color to be? \n\nResponse with a hex color",
+                            "What do you want the role's permissions to be ? \n\nRespond with the calculated permissions number (Respond with 0 for no special permissions). Use a site like this to help: https://discordapi.com/permissions.html",
+                        ]
+                RoleCreated:
+                    Title: "Role Created"
+                    Description: "The {role} role has been created with the following permissions: {permissions}"
+        Deleterole:
+            Errors:
+                InvalidRole: "Please provide a valid role"
+            Confirmation: "Are you sure you would like to delete this role?"
+            Deleted: ":white_check_mark: Role Deleted"
+            Canceled: ":x: Role Deletion Canceled"
+        Msg:
+            CouldntSend: "An error has occured while trying to send the user(s) a message. They probably have their DMs locked."
+            Sent: ":white_check_mark: Messages sent"
+        Rolemenu:
+            Embeds:
+                InvalidMenu:
+                    Title: "Invalid Menu"
+                    Description: "That role menu does not exist. Rolemenu names are **case-sensitive**."
+                Rolemenu:
+                    Title: "Role Menu - "
+            RoleRemoved: "You no longer have the ``{role}`` role!"
+            RoleAdded: "You now have the ``{role}`` role!"
+            RoleNotExist: "The {role} role does not exist. Please contact an administrator."
+        Topic:
+            Title: "Topic Updated"
+            Description: "The channel's topic has been updated to ```{newtopic}```"
+        Update:
+            Questions:
+                [
+                    "What is the update's description?",
+                    "Where would you like to send the update? Mention a channel.",
+                    "Who would you like to ping? Respond with 'no one', 'everyone', @role or a role's name. If you wish to ping multiple roles, seperate each role with a comma.",
+                ]
+            UpdateSetup: "Update Setup: {pos}"
+            SetupCanceled: ":x: **Update Setup Canceled**"
+            Embeds:
+                Posted:
+                    Title: "Update Posted"
+                    Description: "✅ The update has succesfully been posted"
+                InvalidChannel:
+                    Title: "Invalid Channel"
+                    Description: "Please mention a channel"
+                Update:
+                    Title: "Update"
+                    Footer: "Posted By: {tag}"
+        Vote:
+            Errors:
+                MaxChoices: "You can only have a max of 10 choices"
+                CouldNotReact: "Could not react with {emoji} emoji"
+            Embeds:
+                Poll:
+                    Title: "Poll - {pollquestion}"
+                    Footer: "Posted By: {tag}"
+                Posted:
+                    Title: "Poll Posted"
+                    Description: "✅ The poll has succesfully been posted"
+                PollSetup:
+                    Title: "Poll Setup - {pos}"
+                    Questions:
+                        [
+                            "What are people voting for?",
+                            "What is the voting description? (Don't forget to explain which emoji represent what they are voting for)",
+                            "Would you like custom emojis? If so, reply with the emojis each seperated with a comma\nEx: :cactus:,:crown:,:ice_cube: or say 'no'",
+                            "How many options do people have? Max: 10",
+                        ]
+            PollCanceled: "Poll Canceled"
+        Take:
+            Errors:
+                CoinsDisabled: "Taking coins is disabled because the coins module is disabled."
+                XPDsiabled: "Taking experience is disabled because the coins module is disabled."
+                InvalidRole: "The role **{role}** could not be found!"
+                NotNumber: "The amount of {type} to give must be an integer!\n\nYou said: {message}"
+                InvalidPerson: "Please tag a user(s), role(s), @everyone, or say `all`"
+                NoUsers: "No users could be found to give stuff to"
+                HigherRole:
+                    [
+                        "You do not have permission to give roles above your highest role!",
+                        "I can only give roles below my highest role!",
+                    ]
+            Embeds:
+                What:
+                    Title: "What would you like to take?"
+                Roles:
+                    Title: "What role(s) would you like to take? \n\nReply with @role(s) or the role's name."
+                    Description: "Note: Trying to take a role with a space in it's name? Replace the space with an underscore!"
+                Coins:
+                    Title: "How many coins would you like to take?"
+                    Description: "Reply with an integer"
+                Exp:
+                    Title: "How much experience would you like to take?"
+                    Description: "Reply with an integer"
+                Who:
+                    Title: "Who would you like to take the {type} from?"
+                    Description: "Tag a @user(s), @role(s), @everyone, or say `all`"
+                Taken:
+                    Title: "{type} Taken"
+                    Description: "The {type} have been successfully taken from the following users: {users}"
+            Completing: "*Completing action... This may take a few seconds.*"
+            AllMembers: "**(ALL SERVER MEMBERS)**"
+            More: "- and more..."
+        Give:
+            Errors:
+                CoinsDisabled: "Giving coins is disabled because the coins module is disabled."
+                XPDsiabled: "Giving experience is disabled because the coins module is disabled."
+                InvalidRole: "The role **{role}** could not be found!"
+                NotNumber: "The amount of {type} to give must be an integer!\n\nYou said: {message}"
+                InvalidPerson: "Please tag a user(s), role(s), @everyone, or say `all`"
+                NoUsers: "No users could be found to give stuff to"
+                HigherRole:
+                    [
+                        "You do not have permission to give roles above your highest role!",
+                        "I can only give roles below my highest role!",
+                    ]
+            Embeds:
+                What:
+                    Title: "What would you like to give?"
+                Roles:
+                    Title: "What role(s) would you like to give? \n\nReply with @role(s) or the role's name."
+                    Description: "Note: Trying to give a role with a space in it's name? Replace the space with an underscore!"
+                Coins:
+                    Title: "How many coins would you like to give?"
+                    Description: "Reply with an integer"
+                Exp:
+                    Title: "How much experience would you like to give?"
+                    Description: "Reply with an integer"
+                Who:
+                    Title: "Who would you like to give the {type} to?"
+                    Description: "Tag a @user(s), @role(s), @everyone, or say `all`"
+                Given:
+                    Title: "{type} Given"
+                    Description: "The {type} have successfully been given to the following users: {users}"
+            Completing: "*Completing action... This may take a few seconds.*"
+            AllMembers: "**(ALL SERVER MEMBERS)**"
+            More: "- and more..."
+
+ManagementModule:
+    Commands:
+        Command:
+            Errors:
+                InvalidCommand: "That is not a valid command."
+                InvalidStatus: "You must provide either enable or disable."
+                StatusCantBeModified: "The status of this command cannot be modified."
+                InvalidPageNumber: "That is not a valid page number"
+            Embeds:
+                List:
+                    Title: "Commands (Page #{page})"
+                    Description: "These are the current commands in CoreBot:\n{commands}"
+                    Footer: "Run {prefix}command <command> <enable|disable> to enable or disable a command"
+                Command:
+                    Title: "{command} Command"
+                    Fields: ["Current Status"]
+                    Status: ["Enabled", "Disabled"]
+                EnabledDisabled:
+                    Title: "Command {status}"
+                    Description: "The ``{command}`` command has been **{status}**"
+        Module:
+            Errors:
+                InvalidModule: "That is not a valid module."
+                InvalidStatus: "You must provide either enable or disable."
+                StatusCantBeModified: "The status of this module cannot be modified."
+            Embeds:
+                List:
+                    Title: "Modules"
+                    Description: "These are the current modules in CoreBot:\n{modules}"
+                    Footer: "Run {prefix}module <module> <enable|disable> to enable or disable a module"
+                Module:
+                    Title: "{module} Module"
+                    Fields: ["Current Status", "Commands"]
+                    Status: ["Enabled", "Disabled"]
+                EnabledDisabled:
+                    Title: "Module {status}"
+                    Description: "The ``{module}`` module has been **{status}**"
+        Reload:
+            Errors:
+                UnknownAction: "The ``{action}`` action was not found."
+            Addons:
+                - "Reloading bot addons..."
+                - "Bot addons have been reloaded!"
+            Commands:
+                - "Reloading bot commands..."
+                - "Bot commands have been reloaded!"
+            Events:
+                - "Reloading bot events..."
+                - "Bot events have been reloaded!"
+            Bot: 
+                - "Reloading bot..."
+                - "Bot has been successfully reloaded!"
+        Setprefix:
+            Title: "Prefix Updated"
+            Description: "The prefix has now been set to ``{prefix}``"
+        Setstatus:
+            Embeds:
+                Setup:
+                    Title: "Status Setup - {pos}"
+                    Descriptions:
+                        [
+                            "Choose the type of status \n\n🎮 - Playing \n📺 - Watching\n📹 - Streaming\n👂 - Listening\n❌ - Remove status",
+                            "What do you want the status to say?\n\nVariables you can use are:\n**{users}** - Total amount of members in the Discord\n**{tickets}** - Total amount of tickets open in the discord",
+                        ]
+                Updated:
+                    Title: "Bot Status Updated"
+                    Descriptions:
+                        [
+                            "The bot's status has been removed",
+                            "The bot's status is now: {status}",
+                        ]
+        Reset:
+            Title: "{type}s Reset"
+            Descriptions:
+                [
+                    "The user's coins have been set to `0`",
+                    "All user's experience has been set to `0` and levels have been set to `1`.",
+                ]
+
+LogSystem:
+    ChannelCreated:
+        Title: ":tools: Channel Created"
+        Fields: ["Channel", "Type"]
+    ChannelDeleted:
+        Title: ":wastebasket: Channel Deleted"
+        Fields: ["Channel", "Type"]
+    ChannelPinsUpdated:
+        Title: ":pushpin: Pins Updated"
+        Fields: ["Channel"]
+    ChannelUpdated:
+        NameUpdated:
+            Title: ":pencil2: Channel Updated"
+            Fields: ["Channel", "Old Name", "New Name"]
+        PermsUpdated:
+            Title: ":pencil2: Channel Updated"
+            Fields:
+                ["Channel", { Name: "Operation", Value: "Permissions updated" }]
+        ParentUpdated:
+            Title: ":pencil2: Channel Updated"
+            Fields: ["Channel", "Old Category", "New Category"]
+            None: "None"
+        TopicUpdated:
+            Title: ":pencil2: Channel Updated"
+            Fields: ["Channel", "Old Topic", "New Topic"]
+            None: "None"
+    UserRolesUpdated:
+        RoleAdded:
+            Title: ":heavy_minus_sign: Role Added"
+            Fields: ["User", "Role"]
+        RoleRemoved:
+            Title: ":heavy_plus_sign: Role Removed"
+            Fields: ["User", "Role"]
+    DisplaynameUpdated:
+        Title: ":name_badge: Display Name Changed"
+        Fields: ["User", "Old Display Name", "New Display Name"]
+    MessageDeleted:
+        Title: ":wastebasket: Message Deleted"
+        Fields: ["Author", "Channel", "Message"]
+    MessagesBulkDeleted:
+        Title: ":wastebasket: Messages Bulk Deleted"
+        Fields: ["Channel", "Messages"]
+    MessageUpdated:
+        Title: ":pencil: Message Updated"
+        Fields: ["Author", "Channel", "Old Message", "New Message"]
+        Description: "[Click to go to message]({messageurl})"
+    CommandLogs:
+        Title: "Command Used"
+        Fields: ["Executor", "Command", "Message"]
+
+EmbedPresets:
+    NoPerms:
+        Title: "No Permission"
+        Description: "You do not have permission to run this command."
+    InvalidArgs:
+        Title: "Invalid Arguments"
+        Description: "Usage: ``{usage}``"
+    Error:
+        Title: "Error"
+        Descriptions: ["An error has occured.", "Usage: {usage}"]
+    Console:
+        Title: "An error has occured while running this command. Please check console."
+
+Other:
+    InviteRewardsMessage: "You have achieved {invites} invites, so you have recieved the {role} role!"
+    VerifiedRoleNotFound: "The set verified role was not found, therefore I could not give it to you. Please contact an administrator."
+    NotCommandsChannel:
+        Title: "Wrong channel!"
+        Descriptions:
+            [
+                "You can only create tickets in {channels}",
+                "You can only run commands in {channels}",
+                "A commands channel is required to run commands, yet the channel set in the config does not exist!",
+            ]
+    Cooldown:
+        Title: "Cooldown"
+        Description: "That commands is on cooldown! You can use this command in **{seconds} seconds**."
+    InvalidCommand:
+        Title: "Invalid Command"
+        Description: "Did you mean to run the `{command}` command?"
+    OtherCommands:
+        Apply:
+            Errors:
+                InvalidPosition: "That is not a valid position. Please try again."
+                FailedRegExp: "You failed the Regular Expression, please try again"
+                UserLeft: "Error! The user that applied for this position is no longer in the server."
+                PositionNotFound: "Error! Could not find position ``{pos}``"
+                RoleNotFound: "Error! Could not find role ``{role}``"
+                CantNotify: ":x: **Could not notify user.**"
+            Embeds:
+                Created:
+                    Title: "Application Created"
+                    Description: "Your application has been created at {channel}"
+                Answers:
+                    Title: "Answers"
+                    Field: "Applicant"
+                ApplicationLog:
+                    Title: "Application"
+                    Description: "A new application has been created. Click the URL to see a paste."
+                    Field: "Applicant"
+                Accepted:
+                    Title: "Application Accepted"
+                    Description: "Your application has been accepted."
+                Denied:
+                    Title: "Application Denied"
+                    Description: "Your application has been denied."
+                Closed:
+                    Title: "Application Closed"
+                    Field: "Applicant"
+        Avatar:
+            Title: "{user}'s Avatar"
+            Footer: "User Avatar"
+        Bugreport:
+            Embeds:
+                BugReport:
+                    Title: "Bug Report"
+                    Footer: "From: {user}"
+                    Timestamp: true
+                BugReported:
+                    Title: "Bug Reported"
+                    Description: ":white_check_mark: Thank you for reporting the bug."
+        Coinflip:
+            HeadIcon: "https://cdn.discordapp.com/attachments/637105382631669760/675097745295540244/heads.png"
+            TailIcon: "https://cdn.discordapp.com/attachments/637105382631669760/675097748747452431/tails.png"
+            Embeds:
+                Normal:
+                    Title: "Coin Flipped"
+                    Description: "Result: **{result}**"
+                    Footer: "Flipped By: {user}"
+                Gamble:
+                    Title: "Coin Flipped"
+                    Won: "The coin landed on **{result}** and you earned {coins} coins"
+                    Lost: "The coin landed on **{result}** and you lost {coins} coins"
+                    Footer: "Flipped By: {user}"
+        Google:
+            Title: "Google Search"
+            Field:
+                {
+                    Name: "Searching Google for `{search}`...",
+                    Value: "[Click Here]({link})",
+                }
+        Invites:
+            Title: "Invites"
+            Description: "{user} has invited {amt} {form} to this Discord server!"
+            People: "people"
+            Person: "person"
+        Invitetop:
+            Title: "Invite Leaderboard"
+            Footer: "Total Invites: {total}"
+            NoInvites: "There are currently no invites created for this server"
+        Links:
+            Title: "Links"
+            Description: "All links related to the server"
+            Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640010208696860702/Links.png"
+        Ping:
+            Title: "Ping"
+            Thumbnail: "https://cdn.discordapp.com/attachments/637105382631669760/640387847840464932/ping.png"
+            Fields: ["API Latency", "Bot Latency"]
+        Prefix:
+            Title: "Prefix"
+            Description: "My prefix in this server is ``{prefix}``"
+        Remindme:
+            Errors:
+                InvalidTime: "Please provide a valid time format EX: 1m, 20s, 1 day, 5 hrs, etc."
+                InvalidReminder: "Please provide what you would like to be reminded for"
+            Embeds:
+                ReminderSet:
+                    Title: "Reminder Set"
+                    Description: "You will be reminded to ``{reminder}`` in **{time}**"
+                Reminder:
+                    Title: "Reminder"
+                    Description: "Don't forget to ``{reminder}``!"
+        Roleinfo:
+            Title: "Role Info"
+            Fields: ["Created On", "Position", "Permissions", "Members [{amt}]"]
+            Footer: "ID {id}"
+            NoMembers: "None"
+        Rolldice:
+            Sides:
+                [
+                    "https://cdn.discordapp.com/attachments/637105382631669760/675091831746199552/dice-1.png",
+                    "https://cdn.discordapp.com/attachments/637105382631669760/675091832966873088/dice-2.png",
+                    "https://cdn.discordapp.com/attachments/637105382631669760/675091834485342238/dice-3.png",
+                    "https://cdn.discordapp.com/attachments/637105382631669760/675091835575861248/dice-4.png",
+                    "https://cdn.discordapp.com/attachments/637105382631669760/675091837228285982/dice-5.png",
+                    "https://cdn.discordapp.com/attachments/637105382631669760/675091838419337256/dice-6.png",
+                ]
+            RollingDice: "*Rolling dice...*"
+            Embed:
+                Title: "Dice Rolled"
+                Description: "Result: **{result}**"
+                Footer: "Rolled By: {user}"
+        Serverinfo:
+            Fields:
+                [
+                    "Owner",
+                    "Created At",
+                    {
+                        Name: "Member Count",
+                        Value: "**Humans:** {humans}\n**Bots:** {bots}\n**Total:** {total}",
+                    },
+                    "Region",
+                    "Text Channels [{amt}]",
+                    "Roles [{amt}]",
+                ]
+            More: " and more..."
+        Status:
+            Errors:
+                CouldntFetchList: "Error: Could not fetch player list"
+                CouldntFetchVersion: "Error: Could not fetch server version"
+                InvalidServer: "That is not a valid server"
+            LoadingStatus: "Loading server status... This may take a few seconds."
+            Embeds:
+                SpecificStatus:
+                    Title: "{server}"
+                    Fields: ["Online Players", "Players", "Version"]
+                GlobalStatus:
+                    Title: "**{name} Server Status**"
+                    Online: "{server}: \n``{playercount} player(s)``\n\n"
+                    Offline: "{server}: \n``Offline``\n\n"
+        Suggest:
+            Embed:
+                Title: "Suggestion Sent"
+                Description: ":white_check_mark: Your suggestion has successfully been sent"
+            ReactToOwnSuggestion: "You can not react to your own suggestion."
+            AcceptedSuffix: "| Accepted"
+            DeniedSuffix: "| Denied"
+        Userinfo:
+            Title: "User Info"
+            Fields:
+                [
+                    "User",
+                    "ID",
+                    "Registered",
+                    "Joined",
+                    "Roles",
+                    { Name: "Other", Value: "Server Owner" },
+                ]
+
+Help:
+    CategoryNames:
+        [
+            ":cop: Moderation",
+            ":tools: Admin",
+            ":desktop: Management",
+            ":slight_smile: General",
+            ":tickets: Tickets",
+            ":moneybag: Coins",
+            ":sparkles: XP",
+            ":dividers: Other",
+        ]
+    CategoryMenuTitles:
+        [
+            "Moderation Commands",
+            "Admin Commands",
+            "Management Commands",
+            "General Commands",
+            "Ticket Commands",
+            "Coin System Commands",
+            "XP System Commands",
+            "Other Commands",
+        ]
+    HelpMenuTitle: "Help Menu"
+    StaffHelpMenuTitle: "Staff Help Menu"
+    CommandDescriptions:
+        Add: "Add a user to a ticket."
+        Announce: "Create an announcement"
+        Apply: "Create an application"
+        Avatar: "View a user's avatar"
+        Backup: "Backup or restore your discord server."
+        Ban: "Ban a member of the server."
+        Blacklist: "Blacklist a member of the server."
+        Bugreport: "Report a bug on the server"
+        Buy: "Purchase an item from the shop"
+        Clear: "Clear a certain amount of messages"
+        Close: "Close the ticket you are typing in"
+        Closeall: "Close all open tickets"
+        Code: "Users can use this to determine if you are using a legitimate copy of Corebot."
+        Coinflip: "Flip a coin"
+        Coins: "Check how many coins you or another user has"
+        Cointop: "Check the coin leaderboard"
+        Command: "Enable or disable a command"
+        Createrole: "Create a role on the Discord server"
+        Daily: "Get your daily coins"
+        Deleterole: "Delete a role on the Discord server"
+        Eval: "Evalute code on the bot (dangerous)"
+        Filter: "Add, delete, or view the list of filtered words"
+        Gcreate: "Create a giveaway"
+        Gdelete: "Delete the ongoing giveaway"
+        Give: "Give all or certain users coins, experience, or a role"
+        Google: "Search for some thing on google"
+        Greroll: "Create a new set of winners for the giveaway"
+        Gstop: "Force a giveaway to end"
+        Help: "View the command help menu"
+        History: "View the punishment history of a user"
+        Install: "Install all corebot necessary channels and roles"
+        Invites: "View your invites"
+        Invitetop: "View the invite leaderboard"
+        Ip: "View the Minecraft server's IP"
+        Key: "Install a corebot addon"
+        Kick: "Kick a user in the Discord server"
+        Level: "Check your current level"
+        Leveltop: "Check the experience leaderboard"
+        Links: "View links related to the Discord server"
+        Lock: "Lock the channel so users cannot send messages"
+        Module: "Enable or disable a module"
+        Msg: "Message all or certain users"
+        Mute: "Mute a user in the Discord server"
+        New: "Create a ticket"
+        Pay: "Send money to a user"
+        Ping: "Check the bot's latency"
+        Prefix: "Check the bot's prefix"
+        Reload: "Reload certian aspects of the bot"
+        Remindme: "Make the bot remind you to do something"
+        Remove: "Remove a user from the ticket you are typing in"
+        Removewarn: "Remove a warning from a user"
+        Report: "Report a user in the Discord server"
+        Reset: "Reset coins or exp of a user"
+        Roleinfo: "View information on a role"
+        Rolemenu: "Send the reaction role menu"
+        Rolldice: "Roll a dice"
+        Say: "Make the bot send a certain message"
+        Serverinfo: "View server information"
+        Setprefix: "Set the bot's prefix"
+        Setstatus: "Set the bot's status"
+        Shop: "View the Discord server's shop"
+        Slots: "Gamble a certain amount of your coins"
+        Slowmode: "Turn on or off slowmode"
+        Staffhelp: "View the staff command help menu"
+        Status: "View a Minecraft server's status"
+        Suggest: "Suggest something for the Discord server"
+        Take: "Take all or certain users coins, experience, or a role"
+        Tempban: "Temporarily ban a user on the Discord server"
+        Tempmute: "Temporarily mute a user on the Discord server"
+        Topic: "Change the topic of a channel"
+        Unban: "Unban a user on the Discord server"
+        Unblacklist: "Unblacklist a user on the Discord server"
+        Unlock: "Unlock the channel you are typing in"
+        Unmute: "Unmute a user on the Discord server"
+        Update: "Create an update"
+        Userinfo: "View your or a certain user's info"
+        Vote: "Create a poll"
+        Warn: "Warn a user on the Discord server"
+        Warnings: "View the warnings of a user on the Discord server"
+        Work: "Work at a job to earn coins"
